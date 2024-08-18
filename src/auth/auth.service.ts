@@ -22,7 +22,7 @@ export class AuthService {
   signIn(username: string, password: string): AuthResponseDto {
     const foundUser = this.usersService.findByUsername(username);
 
-    if (!foundUser || !bcryptCompareSync(password, foundUser.password) ) {
+    if (!foundUser || !bcryptCompareSync(password, foundUser.password)) {
       throw new UnauthorizedException();
     }
 
