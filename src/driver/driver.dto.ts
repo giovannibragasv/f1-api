@@ -1,14 +1,35 @@
+import { IsDateString, IsOptional, IsString, IsUUID, MaxLength, } from 'class-validator';
+
 export class DriverDto {
-    driverId: string;
-    driverCode: string;
-    firstName: string;
-    surname: string;
-    dateOfBirth: Date;
-    nationality: string;
-    url: string;
+  @IsUUID()
+  @IsOptional()
+  id: string;
+
+  @IsString()
+  driverId: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(3)
+  driverCode: string;
+
+  @IsString()
+  firstName: string;
+
+  @IsString()
+  surname: string;
+
+  @IsDateString()
+  dateOfBirth: Date;
+
+  @IsString()
+  nationality: string;
+
+  @IsString()
+  url: string;
 }
 
 export interface FindAllParameters {
-    firstName: string;
-    surname: string;
+  firstName: string;
+  surname: string;
 }
